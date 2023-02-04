@@ -1,0 +1,12 @@
+.navbar {
+    background-color: #5F021F;
+    text-align: center;
+    padding: 20px !important;
+}
+
+.navbar a{
+    text-decoration: none;
+    color: #EE7F7F;
+    font-size: 25px;
+    font-weight: bold;
+}

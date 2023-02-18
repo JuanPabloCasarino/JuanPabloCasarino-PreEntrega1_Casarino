@@ -6,7 +6,7 @@ const CartWidget = () => {
   return (
     <Container fluid>
             <Row className='carrito'>
-                <Col><img src="./img/carrito.png" width="42px"></img></Col>
+                <Col><img src="./img/carrito.png" width="42px" alt='foto'></img></Col>
                 <Col><h2>2</h2></Col>
             </Row>
         </Container>

@@ -1,4 +1,5 @@
 import CartWidget from '../CartWidget/CartWidget';
+import { Link, NavLink } from 'react-router-dom';
 // Links para estilos
 import './style.css';
 import Container from 'react-bootstrap/Container';
@@ -10,10 +11,32 @@ const NavBar = () => {
     <div>
         <Container fluid>
             <Row className='navbar'>
-                <Col><a href="*">Lo Salado</a></Col>
-                <Col><a href="*">Lo Dulce</a></Col>
-                <Col><a href="*">Mas Dulce</a></Col>
-                <Col><a href="*">Sin Gluten</a></Col>
+                <Col>
+                  <NavLink to="/">
+                    Inicio
+                  </NavLink>
+                </Col>
+                <Col>
+                  <NavLink to="/category/salado">
+                    Lo salado
+                  </NavLink>
+                </Col>
+                <Col>
+                  <Link to="/category/dulce">
+                    Lo Dulce
+                  </Link>
+                </Col>
+                <Col>
+                  <NavLink to="/category/masdulce">
+                    Más Dulce
+                  </NavLink>
+                </Col>
+                <Col>
+                  <NavLink to="/category/singluten">
+                    Sin gluten
+                  </NavLink>
+                </Col>
+                
                 <Col><CartWidget/></Col>
             </Row>
         </Container>

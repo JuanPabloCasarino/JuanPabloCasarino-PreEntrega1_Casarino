@@ -2,6 +2,7 @@
     background-color: #5F021F;
     text-align: center;
     padding: 20px !important;
+    border-bottom: 2px #EE7F7F solid;
 }
 
 .navbar a{
@@ -9,4 +10,9 @@
     color: #EE7F7F;
     font-size: 25px;
     font-weight: bold;
+}
+
+.active{
+    font-size: 35px !important;
+    color: #fcc3c3 !important;
 }

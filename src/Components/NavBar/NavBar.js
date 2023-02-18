@@ -1,5 +1,6 @@
 import CartWidget from '../CartWidget/CartWidget';
 import { Link, NavLink } from 'react-router-dom';
+
 // Links para estilos
 import './style.css';
 import Container from 'react-bootstrap/Container';
@@ -8,39 +9,51 @@ import Col from 'react-bootstrap/Col';
 
 const NavBar = () => {
   return (
-    <div>
-        <Container fluid>
+        <Container fluid >
             <Row className='navbar'>
                 <Col>
-                  <NavLink to="/">
+                  <NavLink className={(estatus)=>
+                    estatus.isActive ? 'active' : 'inactive'
+                  } to="/">
                     Inicio
                   </NavLink>
                 </Col>
                 <Col>
-                  <NavLink to="/category/salado">
-                    Lo salado
+                  <NavLink className={(estatus)=>
+                    estatus.isActive ? 'active' : 'inactive'
+                  }
+                  to="/category/salado">
+                    Lo Salado
                   </NavLink>
                 </Col>
                 <Col>
-                  <Link to="/category/dulce">
+                  <NavLink className={(estatus)=>
+                    estatus.isActive ? 'active' : 'inactive'
+                  }
+                  to="/category/dulceUno">
                     Lo Dulce
-                  </Link>
+                  </NavLink>
                 </Col>
                 <Col>
-                  <NavLink to="/category/masdulce">
+                  <NavLink className={(estatus)=>
+                    estatus.isActive ? 'active' : 'inactive'
+                  }
+                  to="/category/dulceDos">
                     Más Dulce
                   </NavLink>
                 </Col>
                 <Col>
-                  <NavLink to="/category/singluten">
-                    Sin gluten
+                  <NavLink className={(estatus)=>
+                    estatus.isActive ? 'active' : 'inactive'
+                  }
+                  to="/category/sinGluten">
+                    Sin Gluten
                   </NavLink>
                 </Col>
                 
                 <Col><CartWidget/></Col>
             </Row>
         </Container>
-    </div>
   )
 }
 

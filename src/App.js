@@ -3,6 +3,8 @@ import NavBar from "./Components/NavBar/NavBar";
 import ItemListContainer from "./pages/ItemListContainer/ItemListContainer";
 import Error404 from "./Components/Error404/Error404";
 import ItemDetailContainer from "./pages/ItemDetailContainer/ItemDetailContainer";
+import Cart from "./pages/Cart/Cart";
+import CartProvider from "./context/CartProvider";
 // Link de React Bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -16,13 +18,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   return (
       <BrowserRouter>
+      <CartProvider>
         <NavBar/>
         <Routes>
           <Route path="/" element={<ItemListContainer/>}/>
-           <Route path="/item/:id" element={<ItemDetailContainer/>}/>
+          <Route path="/item/:id" element={<ItemDetailContainer/>}/>
           <Route path="/category/:categoryId" element={<ItemListContainer/>}/> 
+          <Route path="/cart" element={<Cart/>}/>
           <Route path="*" element={<Error404/>} /> 
         </Routes>
+      </CartProvider> 
       </BrowserRouter>
   );
 }

@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { CartContext } from '../../context/CartContext';
 import { Link } from 'react-router-dom';
 // importaciones de CSS
@@ -8,13 +8,19 @@ import Col from 'react-bootstrap/Col';
 import './style.css';
 const CartWidget = () => {
   const {cart} = useContext(CartContext)
+  const [total, setTotal] =useState(0);
+
+  useEffect(()=>{
+    setTotal(cart.reduce((prev, curr) => prev + curr.quantity, 0))
+  },[cart])
+
   return (
     <Link to={'/cart'}>
       <Container fluid>
             <Row className='carrito'>
               <Col>
                 <img src="/img/carrito.png" width="42px" alt='foto'/>
-                {cart?.length} 
+                {total} 
               </Col>
             </Row>
       </Container>

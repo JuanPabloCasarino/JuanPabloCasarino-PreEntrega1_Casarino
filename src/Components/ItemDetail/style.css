@@ -6,3 +6,15 @@
     color: antiquewhite;
     color:  #EE7F7F;
 }
+.bot-agregar{
+    color: #EE7F7F;
+    padding: 10px;
+    font-size: 25px;
+}
+.bot-agregar button{
+    background-color: antiquewhite;
+    border-radius: 10px;
+    border-color: antiquewhite;
+    padding: 8px;
+    border: none;
+}

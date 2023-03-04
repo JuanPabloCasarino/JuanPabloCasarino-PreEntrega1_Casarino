@@ -1,0 +1,21 @@
+.carro{
+    text-align: center;
+    background-color: antiquewhite;
+    color: #EE7F7F;
+}
+.botonvac{
+    text-align: center;
+    color: #EE7F7F;
+    margin-top: 30px;
+}
+.botonvac button{
+    margin-top: 10px;
+    padding: 5px;
+    font-size: 25px;
+    width: 50%;
+    color: black;
+    border-radius: 10px;
+    background-color: antiquewhite;
+    border-color:antiquewhite;
+    
+}

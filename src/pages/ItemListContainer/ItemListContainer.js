@@ -2,6 +2,7 @@ import {products} from "../../data/products";
 import { useEffect, useState} from "react";
 import ItemList from "../../Components/ItemList/ItemList";
 import { useParams } from 'react-router-dom';
+import {getFirestore, getDocs, collections} from 'firebase/firestore';
 
 // Importacion de estilos 
 import './style.css';
@@ -37,10 +38,8 @@ const ItemListContainer = ({}) => {
         });
     }, [categoryId]);
 
-      return (
-        <div>
-          <ItemList productList={productList}/>
-        </div>
+      return (    
+          <ItemList productList={productList}/>  
       )
   }
 

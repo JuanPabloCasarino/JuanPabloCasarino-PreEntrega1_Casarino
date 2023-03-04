@@ -32,7 +32,7 @@ export const products =[
         img: '/img/torLimon.png',
     },
     {
-        name: 'Scones de Queso ',
+        name: 'Scones de Queso',
         category:'salado',
         id: '005',
         price:'$80',

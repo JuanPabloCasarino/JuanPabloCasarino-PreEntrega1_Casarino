@@ -42,17 +42,17 @@ const ItemDetail = ({detail}) => {
         </Col>       
     </Row>
     <Row>
-        <Col>
-            <button onClick={()=>addItem(detail, count)}>Agregar al carrito</button>
+        <Col className='bot-agregar'>
+            <button disabled={count >detail.stock ? true : false } onClick={()=>addItem(detail, count)}>Agregar al carrito</button>
         </Col>       
     </Row>
     <Row>
-        <Col>
+        <Col className='bot-agregar'>
             <button onClick={()=>navigate('/')}>Seguir comprando</button>
         </Col>       
     </Row>
     <Row>
-        <Col>
+        <Col className='bot-agregar'>
             <button onClick={()=>navigate('/cart')}>Completar mi compra</button>
         </Col>       
     </Row>

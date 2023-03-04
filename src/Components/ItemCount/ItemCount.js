@@ -18,13 +18,13 @@ const ItemCount = ({count, setCount}) => {
   return (
     <Container fluid>
     <Row className='agrego'>
-        <Col>
+        <Col className='mas-menos'>
             <button onClick={onRemove}>-</button> 
         </Col>  
         <Col>
             <span>{count}</span>
         </Col>
-        <Col>
+        <Col className='mas-menos'>
             <button onClick={onAdd}>+</button>     
         </Col>  
     </Row>

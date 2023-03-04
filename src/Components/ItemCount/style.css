@@ -1,3 +1,9 @@
 .agrego{
-    font-size: 38px;
+    font-size: 50px;
+    color: antiquewhite;
+}
+.mas-menos button{
+    color: antiquewhite;
+    border: none;
+    
 }

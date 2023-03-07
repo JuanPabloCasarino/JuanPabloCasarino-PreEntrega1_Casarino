@@ -8,7 +8,7 @@ import './style.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
+import Form from 'react-bootstrap/Form';
 
 const ItemDetail = ({detail}) => {
     const navigate = useNavigate();
@@ -28,12 +28,26 @@ const ItemDetail = ({detail}) => {
     </Row>
     <Row >
         <Col>
-            <h4>{detail.price}</h4>
+            <h4>${detail.price}</h4>
         </Col>    
     </Row>
     <Row >
         <Col>
             <h4>Stock: {detail.stock}</h4>
+        </Col>       
+    </Row>
+    <Row >
+        <Col>
+            {detail.id === '007' && 
+            <>
+                <select className='opciones' aria-label="Default select example">
+                    <option className='opciones' value="1">Pascualina</option>
+                    <option className='opciones'value="2">Jamon y Queso</option>
+                    <option className='opciones' value="3">Capresse</option>
+                    <option className='opciones' value="3">Berenjena</option>
+            </select>
+          </>
+            }
         </Col>       
     </Row>
     <Row>

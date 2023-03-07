@@ -3,12 +3,14 @@
     text-align: center;
     padding: 20px !important;
     border-bottom: 2px #EE7F7F solid;
+    
 }
 
 .navbar a{
     text-decoration: none;
     color: #EE7F7F;
-    font-size: 25px;
+    font-size: 35px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: bold;
 }
 

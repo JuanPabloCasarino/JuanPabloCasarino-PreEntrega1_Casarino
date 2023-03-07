@@ -14,34 +14,13 @@ const Cart = ()=>{
   const { cart, clear, removeItem } = useContext(CartContext);
   const navigate = useNavigate();
   return (
-    // cart.map((product)=>(
-    // <Container fluid>
-    //   <Row>
-    //     <Col>
-    //       <Card className="carro" >
-    //         <Card.Img src={product.img} alt={product.name}/>
-    //         <Card.Body>
-    //           <Card.Title>{product.name}</Card.Title>
-    //           <Card.Text>{product.quantity}</Card.Text>
-    //           <Button onClick={()=>removeItem(product.id)}>Quitar</Button>
-    //         </Card.Body>
-    //        </Card>
-    //     </Col>
-    //   </Row>
-    // </Container>
-
     <div>
       {cart.map((product)=>(
-        <Container fluid>  
-          <Row>
-          <Col >
-                <Card.Title>{product.name}</Card.Title>
-                <Card.Text>{product.quantity}</Card.Text>
-                <Button onClick={()=>removeItem(product.id)}>Quitar</Button>  
-          </Col>
-        </Row>
-        </Container>
-        
+            <Col className="carro">
+                <h4 className="titulo">{product.name}</h4>
+                <h3>{product.quantity} - ${product.price*product.quantity}</h3>
+                <button className="quitar" onClick={()=>removeItem(product.id)}>Quitar</button>  
+            </Col> 
       ))}
       {cart.length > 0 && <div className="botonvac"><button onClick={clear}>Vaciar carrito</button></div>}
       {cart.length == 0 && <div  className="botonvac">

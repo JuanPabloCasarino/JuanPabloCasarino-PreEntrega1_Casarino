@@ -18,3 +18,13 @@
     padding: 8px;
     border: none;
 }
+.opciones{
+    background-color: antiquewhite;
+    border-radius: 10px;
+    border-color: antiquewhite;
+    padding: 10px;
+    border: none;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}

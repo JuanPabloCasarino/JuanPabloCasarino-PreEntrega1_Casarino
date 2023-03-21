@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { CartContext } from "../../context/CartContext"
 import { useNavigate } from 'react-router-dom';
 import {collection, adDoc, getFirestore, addDoc, doc, updateDoc} from 'firebase/firestore';
@@ -7,10 +7,17 @@ import {collection, adDoc, getFirestore, addDoc, doc, updateDoc} from 'firebase/
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 import './style.css';
 
 const Cart = ()=>{
   const { cart, clear, removeItem } = useContext(CartContext);
+  const [formValue, setFormValue] = useState({
+    name:"",
+    phone:"",
+    email:'',
+  })
   const navigate = useNavigate();
   const db = getFirestore();
   
@@ -20,9 +27,9 @@ const Cart = ()=>{
     const querySnapshot = collection(db, 'orders');
     addDoc(querySnapshot,{
       buyer: {
-        email: 'test@example.com',
-        name: 'test',
-        phone: '121313563',
+        email: formValue.email,
+        name: formValue.name,
+        phone: formValue.phone,
       },
       products: cart.map((product)=>{
         return{
@@ -55,6 +62,13 @@ const Cart = ()=>{
     })
   }
 
+
+  const handleInput = (event) =>{
+    setFormValue({
+      ...formValue,
+      [event.target.name]: event.target.value,
+    });
+  }
   return (
     <div>
       {cart.map((product)=>(
@@ -66,13 +80,35 @@ const Cart = ()=>{
       ))}
       {cart.length > 0 && 
       <div className="botonvac">
-        <button onClick={createOrder} className="completo">Confirmar</button>
         <button className="vacio" onClick={clear}>Vaciar carrito</button>
       </div>}
-      {cart.length == 0 && <div  className="botonvac">
+      {cart.length == 0 && <div className="botonvac">
           <h2>No hay productos en el carrito</h2>
           <button onClick={()=>navigate('/')}>Seguir comprando</button>
         </div>}
+
+        {cart.length > 0 &&
+        <Form className="form">
+          <Form.Group className="mb-3 formulario">
+              <Form.Label>Nombre</Form.Label>
+              <Form.Control type="text" placeholder="Ingresa tu Nombre" 
+              value={formValue.name} onChange={handleInput} name="name"/>
+            </Form.Group>
+            <Form.Group className="mb-3 formulario">
+              <Form.Label>Telefono</Form.Label>
+              <Form.Control type="text" placeholder="Ingresa tu Telefono" 
+              value={formValue.phone} onChange={handleInput} name="phone"/>
+            </Form.Group>
+            <Form.Group className="mb-3 formulario">
+              <Form.Label>Direccion de E-Mail</Form.Label>
+              <Form.Control type="text" placeholder="Ingresa tu E-Mail" 
+              value={formValue.email} onChange={handleInput} name="email"/>
+            </Form.Group>
+            <button onClick={createOrder} className="confirmar" type="submit">
+              Confirmar compra
+            </button>
+        </Form>
+        }
     </div>
   )  
 };

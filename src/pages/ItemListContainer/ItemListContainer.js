@@ -1,41 +1,54 @@
-import {products} from "../../data/products";
 import { useEffect, useState} from "react";
 import ItemList from "../../Components/ItemList/ItemList";
 import { useParams } from 'react-router-dom';
-import {getFirestore, getDocs, collections} from 'firebase/firestore';
+import {getFirestore, getDocs, collection, query, where, Query} from 'firebase/firestore';
 
 // Importacion de estilos 
 import './style.css';
 
-const ItemListContainer = ({}) => {
+const ItemListContainer = () => {
 
     const {categoryId} =useParams();
-    
     const [productList, setProductList] = useState([]);
-    const getProducts = new Promise((res, reject) => {
+
+    const getProducts = ()=>{
+      const db = getFirestore();
+      const querySnapshot = collection(db,'products');
+
       if(categoryId){
-          const filteredProducts = products.filter(
-            (item) => item.category == categoryId
-          );
-          setTimeout(() => {
-            res(filteredProducts)
-          }, 2000);
-        } else {
-          setTimeout(() => {
-            res(products)
-          }, 2000);
-      }
-      
-    });
-    
-    useEffect(() => {
-      getProducts
+        const filteredQuery = query(querySnapshot, where('category', '==', categoryId));
+        // Filtro por categorias
+        getDocs(filteredQuery)
         .then((response)=>{
-          setProductList(response)
+          const list =response.docs.map((doc)=>{
+            return {
+              id: doc.id, 
+              ...doc.data(),
+            };
+          });
+          setProductList(list);
         })
-        .catch((error)=>{
-          console.log(error)
-        });
+        .catch((error)=> console.log(error));
+      }else{
+        // Catalogo entero
+        getDocs(querySnapshot)
+        .then((response)=>{
+          const list =response.docs.map((doc)=>{
+            return {
+              id: doc.id, 
+              ...doc.data(),
+            };
+          });
+          setProductList(list);
+        })
+        .catch((error)=> console.log(error));
+      }
+      // Catalogo entero 
+      
+     };
+
+    useEffect(() => {
+      getProducts();
     }, [categoryId]);
 
       return (    

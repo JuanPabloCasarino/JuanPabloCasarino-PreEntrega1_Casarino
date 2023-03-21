@@ -13,7 +13,7 @@ import Form from 'react-bootstrap/Form';
 const ItemDetail = ({detail}) => {
     const navigate = useNavigate();
     const {addItem} = useContext(CartContext);
-    const [count, setCount] = useState(1);
+    const [count, setCount] = useState(detail?.stock=== 0 ? 0 : 1);
   return (
 <Container fluid className='detalles'>
     <Row >
@@ -46,7 +46,7 @@ const ItemDetail = ({detail}) => {
                     <option className='opciones' value="3">Capresse</option>
                     <option className='opciones' value="3">Berenjena</option>
             </select>
-          </>
+            </>
             }
         </Col>       
     </Row>

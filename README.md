@@ -1,3 +1,8 @@
+# La Adorada ECommerce
+Esto es una tienda para productos de cafeteria que destaca por su calidad y sabor, tiene como objetivo que la pagina sea clara y sencilla para que el cliente tenga acceso lo mas rapido posible a los productos disponibles
+
+# Librerias utilizadas
+Se utilizo Bootstrap para React para mejorar la vista de la pagina y que sea mas accesible desde otros dispositivos
 
 #Importo GIF
 ![](./pasoAPaso.gif){width='100px'}

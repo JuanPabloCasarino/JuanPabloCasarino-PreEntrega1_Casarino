@@ -4,10 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import {collection, adDoc, getFirestore, addDoc, doc, updateDoc} from 'firebase/firestore';
 
 // importaciones CSS
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import './style.css';
 
@@ -72,7 +69,7 @@ const Cart = ()=>{
   return (
     <div>
       {cart.map((product)=>(
-            <Col className="carro">
+            <Col key={product.id} className="carro">
                 <h4 className="titulo">{product.name}</h4>
                 <h3>{product.quantity} - ${product.price*product.quantity}</h3>
                 <button className="quitar" onClick={()=>removeItem(product.id)}>Quitar</button>  
